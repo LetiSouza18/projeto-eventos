@@ -1,5 +1,6 @@
 const express = require('express');
 const livrosRouter = require('./routes/livros');
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/local', {
@@ -14,6 +15,7 @@ mongoose.connect('mongodb://localhost:27017/local', {
 // Middleware para parsear JSON
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // Usar as rotas definidas
 app.use('/api', livrosRouter)

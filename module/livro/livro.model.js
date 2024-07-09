@@ -3,10 +3,10 @@ const { Schema } = mongoose;
 
 const livroSchema = new Schema(
     {
-        _id: String,
+        id: Number,
         titulo: String,
-        paginas: Number,
-        codigo: String,
+        num_paginas: Number,
+        isbn: String,
         editora: String,
     },
     {
