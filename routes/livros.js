@@ -33,10 +33,10 @@ router.patch('/editar/:id', async (req, res) => {
             livro.titulo = req.body.titulo;
         }
         if(req.body.num_paginas != null){
-            livro.num_paginas = req.body.paginas;
+            livro.num_paginas = req.body.num_paginas;
         }
         if(req.body.isbn != null){
-            livro.isbn = req.body.codigo;
+            livro.isbn = req.body.isbn;
         }
         if(req.body.editora != null){
             livro.editora = req.body.editora;
