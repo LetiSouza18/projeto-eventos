@@ -1,5 +1,7 @@
-# Projeto backend 
-### 🚀 Biblioteca virtual, na qual o usuário possa listar, cadastrar, editar e remover livros (CRUD). O projeto é uma API REST desenvolvida com Express.js, Node.js e o banco de dados utilizado foi o MongoDB.
+# Projeto Backend 
+### Biblioteca virtual, na qual o usuário possa listar, cadastrar, editar e remover livros (CRUD). O projeto é uma API REST desenvolvida com Express.js, Node.js e o banco de dados utilizado foi o MongoDB.
+### 🚀 Frontend do projeto
+Disponível em: https://github.com/LetiSouza18/frontend-projeto-livro
 
 ### 📋 Pré-requisitos
 Node.js instalado na máquina e MongoDB (instalado ou rodando em um container do Docker).
