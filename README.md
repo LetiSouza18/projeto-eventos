@@ -1,19 +1,52 @@
-# Projeto Backend 
-### Biblioteca virtual, na qual o usuário possa listar, cadastrar, editar e remover livros (CRUD). O projeto é uma API REST desenvolvida com Express.js, Node.js e o banco de dados utilizado foi o MongoDB.
+# Projeto Backend - Sistema de Eventos
+### API REST para gerenciamento de eventos, atividades e temas, permitindo criação, listagem, edição e remoção dessas entidades com regras específicas, como deleção em cascata e gerenciamento de relacionamentos. O projeto foi desenvolvido com Express.js, Node.js e o banco de dados utilizado foi o Postgree.
+
 ### 🚀 Frontend do projeto
 Disponível em: https://github.com/LetiSouza18/frontend-projeto-livro
 
 ### 📋 Pré-requisitos
-Node.js instalado na máquina e MongoDB (instalado ou rodando em um container do Docker).
+1 - Node.js instalado
+2 - Banco de dados configurado (PostgreSQL)
+3 - (Opcional) Docker para facilitar o ambiente do banco
 
 ### 🔧 Instalação
 - Clone o repositório para sua máquina local: ```git clone URL_DO_REPOSITÓRIO cd NOME_DO_DIRETÓRIO ```
+  
 - Dentro do diretório do projeto, execute o seguinte comando para instalar todas as dependências necessárias: ``` npm install ```
+  
+- Configure o arquivo .env com as variáveis do banco de dados (exemplo):
+  ``` DB_HOST=localhost
+    DB_PORT=5432
+    DB_USER=usuario
+    DB_PASS=senha
+    DB_NAME=nome_do_banco ```
 
 ### ⚙️ Executando os testes
-- Inicie o container do MongoDB no Docker ou inicie no terminal.
-- Crie um schema com o nome "livros" dentro da collection "local".
+- Inicie o banco de dados localmente ou via container Docker.
+- 
 - Para iniciar o servidor de desenvolvimento, execute: ``` npm run dev ```
 
+### Funcionalidades principais
+- CRUD para Eventos
+
+- CRUD para Atividades e Atividades Únicas
+
+- Gerenciamento de temas relacionados a atividades
+
+- Regras de deleção:
+
+- - Evento com deleção em cascata de atividades relacionadas
+
+- - Atividade e Atividade Única removem seus relacionamentos com temas ao serem deletadas
+
+### Estrutura do Projeto
+- `src/entities` — Entidades do banco (Evento, Atividade, etc)
+
+- `src/controllers` — Lógica das rotas REST
+
+- `src/routes` — Definição dos endpoints
+
+- `src/data-source.js` — Configuração do TypeORM
+
 ### 🛠️ Demonstração:
-https://github.com/LetiSouza18/backend-projeto-livro/assets/138714479/61d9f9b4-bdcb-42f9-837a-70ca2cc0158b
+

@@ -4,20 +4,10 @@ const Instituicao = new EntitySchema({
   name: 'Instituicao',
   tableName: 'instituicoes',
   columns: {
-    id: {
-      type: Number,
-      primary: true,
-      generated: true,
-    },
-    descricao: {
-      type: String,
-    },
-    nome: {
-      type: String,
-    },
-    departamento: {
-      type: Date,
-    },
+    id: { type: Number, primary: true, generated: true },
+    descricao: { type: String, nullable: true },
+    nome: { type: String, nullable: false },
+    departamento: { type: String, nullable: true },
   },
 });
 

@@ -4,43 +4,61 @@ const Atividade = new EntitySchema({
   name: 'Atividade',
   tableName: 'atividades',
   columns: {
-    id: {
-      type: Number,
-      primary: true,
-      generated: true,
+    id: { type: Number, primary: true, generated: true },
+    nome: { type: String, nullable: false },
+    data: { type: Date, nullable: true },
+    descricao: { type: String, nullable: true },
+    horario_inicio: { type: String, nullable: true },
+    horario_fim: { type: String, nullable: true },
+    detalhe_local: { type: String, nullable: true },
+  },
+  relations: {
+    evento: {
+      type: 'many-to-one',
+      target: 'Evento',
+      joinColumn: { name: 'idEvento' },
+      nullable: false,
     },
-    idEvento: {
-      type: String,
+    tipo: {
+      type: 'many-to-one',
+      target: 'Tipo',
+      joinColumn: { name: 'idTipo' },
+      nullable: true,
     },
-    nome: {
-      type: String,
+    instituicao: {
+      type: 'many-to-one',
+      target: 'Instituicao',
+      joinColumn: { name: 'idInstituicao' },
+      nullable: true,
     },
-    data: {
-      type: Date,
+    publicoAlvo: {
+      type: 'many-to-one',
+      target: 'PublicoAlvo',
+      joinColumn: { name: 'idPublicoAlvo' },
+      nullable: true,
     },
-    descricao: {
-      type: String,
+    responsavel: {
+      type: 'many-to-one',
+      target: 'Responsavel',
+      joinColumn: { name: 'idResponsavel' },
+      nullable: true,
     },
-    horario_inicio: {
-      type: String,
-    },
-    horario_fim: {
-      type: String,
-    },
-    detalhe_local: {
-      type: String,
-    },
-    idTipo: {
-      type: String,
-    },
-    idInstituicao: {
-      type: String,
-    },
-    idPublicoAlvo: {
-      type: String,
-    },
-    idResponsavel: {
-      type: String,
+    temas: {
+      type: 'many-to-many',
+      target: 'Tema',
+      joinTable: {
+        name: 'atividade_tema',
+        joinColumn: {
+          name: 'atividade_id',
+          referencedColumnName: 'id',
+        },
+        inverseJoinColumn: {
+          name: 'tema_id',
+          referencedColumnName: 'id',
+        },
+      },
+      cascade: true,
+      nullable: true,
     },
   },
 });

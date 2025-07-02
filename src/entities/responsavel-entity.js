@@ -4,29 +4,13 @@ const Responsavel = new EntitySchema({
   name: 'Responsavel',
   tableName: 'responsaveis',
   columns: {
-    cpf: {
-      type: Number,
-      primary: true,
-      generated: true,
-    },
-    telefone: {
-      type: String,
-    },
-    nome: {
-      type: String,
-    },
-    linkedin: {
-      type: String,
-    },
-    email: {
-      type: String,
-    },
-    lattes: {
-      type: String,
-    },
-    bio: {
-      type: String,
-    },
+    cpf: { type: String, primary: true },
+    telefone: { type: String, nullable: true },
+    nome: { type: String, nullable: false },
+    linkedin: { type: String, nullable: true },
+    email: { type: String, nullable: true },
+    lattes: { type: String, nullable: true },
+    bio: { type: String, nullable: true },
   },
 });
 

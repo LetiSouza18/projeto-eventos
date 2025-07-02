@@ -4,32 +4,14 @@ const Local = new EntitySchema({
   name: 'Local',
   tableName: 'locais',
   columns: {
-    id: {
-      type: Number,
-      primary: true,
-      generated: true,
-    },
-    cep: {
-      type: String,
-    },
-    estado: {
-      type: String,
-    },
-    bairro: {
-      type: Date,
-    },
-    numero: {
-      type: String,
-    },
-    rua: {
-      type: String,
-    },
-    cidade: {
-      type: String,
-    },
-    plataforma: {
-      type: String,
-    },
+    id: { type: Number, primary: true, generated: true },
+    cep: { type: String, nullable: false },
+    estado: { type: String, nullable: true },
+    bairro: { type: String, nullable: true },
+    numero: { type: String, nullable: true },
+    rua: { type: String, nullable: true },
+    cidade: { type: String, nullable: true },
+    plataforma: { type: String, nullable: true },
   },
 });
 
