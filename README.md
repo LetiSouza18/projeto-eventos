@@ -27,7 +27,7 @@ Disponível em: https://github.com/LetiSouza18/frontend-projeto-livro
   
 - Para iniciar o servidor de desenvolvimento, execute: ``` npm run dev ```
 
-### Funcionalidades principais
+### 🔄 Funcionalidades principais
 - CRUD para Eventos
 
 - CRUD para Atividades e Atividades Únicas
@@ -40,7 +40,7 @@ Disponível em: https://github.com/LetiSouza18/frontend-projeto-livro
 
   - Atividade e Atividade Única removem seus relacionamentos com temas ao serem deletadas
 
-### Estrutura do Projeto
+### 🏗️ Estrutura do Projeto
 - `src/entities` — Entidades do banco (Evento, Atividade, etc)
 
 - `src/controllers` — Lógica das rotas REST
