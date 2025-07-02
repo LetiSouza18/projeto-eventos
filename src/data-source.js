@@ -1,5 +1,6 @@
 const { DataSource } = require('typeorm');
 const { Livro } = require('./livros/livro.entity');
+const { Atividade, AtividadeUnica, Evento, Instituicao, Local, Tipo, Tema, PublicoAlvo, Responsavel } = require('./entities');
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -10,7 +11,7 @@ const AppDataSource = new DataSource({
   database: 'postgres',
   synchronize: true,
   logging: true,
-  entities: [Livro],
+  entities: [Livro, Atividade, AtividadeUnica, Evento, Instituicao, Local, Tipo, Tema, PublicoAlvo, Responsavel],
 });
 
 module.exports = { AppDataSource };
