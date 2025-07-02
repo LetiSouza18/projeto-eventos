@@ -5,9 +5,9 @@
 Disponível em: https://github.com/LetiSouza18/frontend-projeto-livro
 
 ### 📋 Pré-requisitos
-1 - Node.js instalado
-2 - Banco de dados configurado (PostgreSQL)
-3 - (Opcional) Docker para facilitar o ambiente do banco
+1. Node.js instalado
+2. Banco de dados configurado (PostgreSQL)
+3. (Opcional) Docker para facilitar o ambiente do banco
 
 ### 🔧 Instalação
 - Clone o repositório para sua máquina local: ```git clone URL_DO_REPOSITÓRIO cd NOME_DO_DIRETÓRIO ```
@@ -15,15 +15,16 @@ Disponível em: https://github.com/LetiSouza18/frontend-projeto-livro
 - Dentro do diretório do projeto, execute o seguinte comando para instalar todas as dependências necessárias: ``` npm install ```
   
 - Configure o arquivo .env com as variáveis do banco de dados (exemplo):
-  ``` DB_HOST=localhost
-    DB_PORT=5432
-    DB_USER=usuario
-    DB_PASS=senha
-    DB_NAME=nome_do_banco ```
+  ```
+  DB_HOST=localhost
+  DB_PORT=5432
+  DB_USER=usuario
+  DB_PASS=senha
+  DB_NAME=nome_do_banco
 
 ### ⚙️ Executando os testes
 - Inicie o banco de dados localmente ou via container Docker.
-- 
+  
 - Para iniciar o servidor de desenvolvimento, execute: ``` npm run dev ```
 
 ### Funcionalidades principais
@@ -35,9 +36,9 @@ Disponível em: https://github.com/LetiSouza18/frontend-projeto-livro
 
 - Regras de deleção:
 
-- - Evento com deleção em cascata de atividades relacionadas
+  - Evento com deleção em cascata de atividades relacionadas
 
-- - Atividade e Atividade Única removem seus relacionamentos com temas ao serem deletadas
+  - Atividade e Atividade Única removem seus relacionamentos com temas ao serem deletadas
 
 ### Estrutura do Projeto
 - `src/entities` — Entidades do banco (Evento, Atividade, etc)
