@@ -1,14 +1,24 @@
 const { AppDataSource } = require('../data-source');
 const { AtividadeUnica } = require('../entities/atividade-unica-entity');
 
-const atividadeUnicaRepository = AppDataSource.getRepository('AtividadeUnica');
+const atividadeUnicaRepository = AppDataSource.getRepository(AtividadeUnica);
 
 
 async function criarAtividadeUnica(req, res) {
+  const { eventoId } = req.params;
   const { temas: temasIds, ...dadosAtividadeUnica } = req.body;
 
   try {
-    const novaAtividadeUnica = atividadeUnicaRepository.create(dadosAtividadeUnica);
+    const evento = await AppDataSource.getRepository('Evento').findOneBy({ id: parseInt(eventoId) });
+
+    if (!evento) {
+      return res.status(404).json({ message: 'Evento não encontrado' });
+    }
+
+    const novaAtividadeUnica = atividadeUnicaRepository.create({
+      ...dadosAtividadeUnica,
+      evento,
+    });
 
     if (Array.isArray(temasIds) && temasIds.length > 0) {
       const temas = await AppDataSource.getRepository('Tema').find({
