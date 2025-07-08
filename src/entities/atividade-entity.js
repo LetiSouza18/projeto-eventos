@@ -18,6 +18,7 @@ const Atividade = new EntitySchema({
       target: 'Evento',
       joinColumn: { name: 'idEvento' },
       nullable: false,
+      onDelete: 'CASCADE',
     },
     tipo: {
       type: 'many-to-one',

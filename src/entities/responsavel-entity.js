@@ -4,7 +4,7 @@ const Responsavel = new EntitySchema({
   name: 'Responsavel',
   tableName: 'responsaveis',
   columns: {
-    cpf: { type: String, primary: true },
+    id: { type: String, primary: true },
     telefone: { type: String, nullable: true },
     nome: { type: String, nullable: false },
     linkedin: { type: String, nullable: true },

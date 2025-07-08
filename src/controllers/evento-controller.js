@@ -63,22 +63,10 @@ async function deletarEvento(req, res) {
   const { id } = req.params;
 
   try {
-    const evento = await eventoRepository.findOne({
-      where: { id: parseInt(id) },
-      relations: ['atividades', 'atividadesUnicas'],
-    });
+    const evento = await eventoRepository.findOneBy({ id: parseInt(id) });
 
-    if (!evento) return res.status(404).json({ message: 'Evento não encontrado' });
-
-    if (evento.atividades && evento.atividades.length > 0) {
-      for (const atividade of evento.atividades) {
-        await atividadeRepository.delete(atividade.id);
-      }
-    }
-    if (evento.atividadesUnicas && evento.atividadesUnicas.length > 0) {
-      for (const atividadeUnica of evento.atividadesUnicas) {
-        await atividadeUnicaRepository.delete(atividadeUnica.id);
-      }
+    if (!evento) {
+      return res.status(404).json({ message: 'Evento não encontrado' });
     }
 
     await eventoRepository.delete(id);
