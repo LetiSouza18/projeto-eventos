@@ -9,7 +9,7 @@ const Evento = new EntitySchema({
     data_inicio: { type: Date, nullable: true },
     data_fim: { type: Date, nullable: true },
     descricao: { type: String, nullable: true },
-    valor: { type: Number, nullable: true },
+    valor: { type: String, nullable: true },
     modalidade: { type: String, nullable: true },
     link_inscricao: { type: String, nullable: true },
     imagem_url: { type: String, nullable: true },

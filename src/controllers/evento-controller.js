@@ -31,7 +31,6 @@ async function listarEventos(_, res) {
         },
         atividadesUnicas: {
           temas: true, 
-          tipo: true, 
           instituicao: true, 
           publicoAlvo: true, 
           responsavel: true, 

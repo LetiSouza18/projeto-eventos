@@ -21,8 +21,8 @@ router.post('/eventos/:eventoId/atividades', atividadeController.criarAtividade)
 router.put('/atividades/:id', atividadeController.atualizarAtividade);
 router.delete('/atividades/:id', atividadeController.deletarAtividade);
 
-router.post('/eventos/:eventoId/atividades-unicas', atividadeUnicaController.criarAtividadeUnica);
-router.get('/eventos/:eventoId/atividades-unicas', atividadeUnicaController.listarAtividadesUnicas);
+router.post('/eventos/:id/atividades-unicas', atividadeUnicaController.criarAtividadeUnica);
+router.get('/atividades-unicas', atividadeUnicaController.listarAtividadesUnicas);
 router.put('/atividades-unicas/:id', atividadeUnicaController.atualizarAtividadeUnica);
 router.delete('/atividades-unicas/:id', atividadeUnicaController.deletarAtividadeUnica);
 
