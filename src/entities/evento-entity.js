@@ -23,16 +23,10 @@ const Evento = new EntitySchema({
       cascade: true,
     },
     atividadesUnicas: {
-      type: 'one-to-one',
+      type: 'one-to-many',
       target: 'AtividadeUnica',
       inverseSide: 'evento',
       cascade: true,
-    },
-    locais: {
-      type: 'one-to-one',
-      target: 'Local',
-      inverseSide: 'eventos',
-      nullable: true,
     },
   },
 });

@@ -5,20 +5,13 @@ const Local = new EntitySchema({
   tableName: 'locais',
   columns: {
     id: { type: Number, primary: true, generated: true },
-    cep: { type: String, nullable: true },
+    cep: { type: String, nullable: false },
     estado: { type: String, nullable: true },
     bairro: { type: String, nullable: true },
     numero: { type: String, nullable: true },
     rua: { type: String, nullable: true },
     cidade: { type: String, nullable: true },
-  },
-  relations: {
-    eventos: {
-      type: 'one-to-one',
-      target: 'Evento',
-      inverseSide: 'locais',
-      cascade: true,
-    },
+    plataforma: { type: String, nullable: true },
   },
 });
 
