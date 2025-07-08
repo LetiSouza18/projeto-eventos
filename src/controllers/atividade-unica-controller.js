@@ -1,5 +1,6 @@
 const { AppDataSource } = require('../data-source');
-const { AtividadeUnica } = require('../entities/atividade-unica-entity');
+const { Responsavel, Instituicao, PublicoAlvo, Evento, Tipo, AtividadeUnica } = require('../entities');
+const { In } = require('typeorm'); 
 
 const atividadeUnicaRepository = AppDataSource.getRepository(AtividadeUnica);
 
@@ -7,14 +8,26 @@ const atividadeUnicaRepository = AppDataSource.getRepository(AtividadeUnica);
 async function criarAtividadeUnica(req, res) {
   const { eventoId } = req.params;
   const { temas: temasIds, ...dadosAtividadeUnica } = req.body;
-
+  
   try {
     const evento = await AppDataSource.getRepository(Evento).findOneBy({ id: parseInt(eventoId) });
-    const tipo = await AppDataSource.getRepository(Tipo).findOneBy({ id: dadosAtividade.idTipo });
-    const responsavel = await AppDataSource.getRepository(Responsavel).findOneBy({ id: dadosAtividade.idResponsavel });
-    const instituicao = await AppDataSource.getRepository(Instituicao).findOneBy({ id: dadosAtividade.idInstituicao });
-    const publicoAlvo = await AppDataSource.getRepository(PublicoAlvo).findOneBy({ id: dadosAtividade.idPublicoAlvo });
-
+    let tipo = null;
+    let responsavel = null;
+    let instituicao = null;
+    let publicoAlvo = null;
+    if(dadosAtividadeUnica.idTipo !== undefined) {
+      tipo = await AppDataSource.getRepository(Tipo).findOneBy({ id: dadosAtividadeUnica.idTipo });
+    }
+    if(dadosAtividadeUnica.idResponsavel !== undefined) {
+      responsavel = await AppDataSource.getRepository(Responsavel).findOneBy({ id: dadosAtividadeUnica.idResponsavel });
+    }
+    if(dadosAtividadeUnica.idInstituicao !== undefined) {
+      instituicao = await AppDataSource.getRepository(Instituicao).findOneBy({ id: dadosAtividadeUnica.idInstituicao });
+    }
+    if(dadosAtividadeUnica.idPublicoAlvo !== undefined) {
+      publicoAlvo = await AppDataSource.getRepository(PublicoAlvo).findOneBy({ id: dadosAtividadeUnica.idPublicoAlvo });
+    }
+    console.log('dados', evento, tipo, responsavel, instituicao, publicoAlvo);
     if (!evento) {
       return res.status(404).json({ message: 'Evento não encontrado' });
     }
@@ -49,9 +62,13 @@ async function criarAtividadeUnica(req, res) {
   }
 }
 
-async function listarAtividadesUnicas(_, res) {
+async function listarAtividadesUnicas(req, res) {
+  const { eventoId } = req.params;
   try {
     const atividadesUnicas = await atividadeUnicaRepository.find({
+      where: {
+        id: eventoId ? parseInt(eventoId) : undefined,
+      },
       relations: ['temas'],
     });
     res.json(atividadesUnicas);

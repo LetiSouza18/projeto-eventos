@@ -10,10 +10,22 @@ async function criarAtividade(req, res) {
 
   try {
     const evento = await AppDataSource.getRepository(Evento).findOneBy({ id: parseInt(eventoId) });
-    const tipo = await AppDataSource.getRepository(Tipo).findOneBy({ id: dadosAtividade.idTipo });
-    const responsavel = await AppDataSource.getRepository(Responsavel).findOneBy({ id: dadosAtividade.idResponsavel });
-    const instituicao = await AppDataSource.getRepository(Instituicao).findOneBy({ id: dadosAtividade.idInstituicao });
-    const publicoAlvo = await AppDataSource.getRepository(PublicoAlvo).findOneBy({ id: dadosAtividade.idPublicoAlvo });
+    let tipo = null;
+    let responsavel = null;
+    let instituicao = null;
+    let publicoAlvo = null;
+    if(dadosAtividade.idTipo !== undefined) {
+      tipo = await AppDataSource.getRepository(Tipo).findOneBy({ id: dadosAtividade.idTipo });
+    }
+    if(dadosAtividade.idResponsavel !== undefined) {
+      responsavel = await AppDataSource.getRepository(Responsavel).findOneBy({ id: dadosAtividade.idResponsavel });
+    }
+    if(dadosAtividade.idInstituicao !== undefined) {
+      instituicao = await AppDataSource.getRepository(Instituicao).findOneBy({ id: dadosAtividade.idInstituicao });
+    }
+    if(dadosAtividade.idPublicoAlvo !== undefined) {
+      publicoAlvo = await AppDataSource.getRepository(PublicoAlvo).findOneBy({ id: dadosAtividade.idPublicoAlvo });
+    }
 
     if (!evento) {
       return res.status(404).json({ message: 'Evento não encontrado' });
