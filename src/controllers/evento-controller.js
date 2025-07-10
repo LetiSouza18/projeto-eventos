@@ -83,7 +83,7 @@ async function deletarEvento(req, res) {
 
     await eventoRepository.delete(id);
 
-    res.status(204).send();
+    res.status(200).json({ message: 'Evento deletado com sucesso' });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Erro ao deletar evento' });

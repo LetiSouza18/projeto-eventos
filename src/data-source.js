@@ -7,7 +7,7 @@ const AppDataSource = new DataSource({
   port: 5432,
   username: 'postgres',
   password: '1234',
-  database: 'postgres',
+  database: 'eventos',
   synchronize: true,
   logging: true,
   entities: [Atividade, AtividadeUnica, Evento, Instituicao, Local, Tipo, Tema, PublicoAlvo, Responsavel],

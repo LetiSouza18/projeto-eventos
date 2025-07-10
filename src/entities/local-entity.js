@@ -13,6 +13,13 @@ const Local = new EntitySchema({
     cidade: { type: String, nullable: true },
     plataforma: { type: String, nullable: true },
   },
+  relations: {
+    evento: {
+      type: 'many-to-one',
+      target: 'Evento',
+      nullable: true,
+    },
+  }
 });
 
 module.exports = { Local };

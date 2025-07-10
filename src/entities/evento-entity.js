@@ -12,7 +12,7 @@ const Evento = new EntitySchema({
     valor: { type: String, nullable: true },
     modalidade: { type: String, nullable: true },
     link_inscricao: { type: String, nullable: true },
-    imagem_url: { type: String, nullable: true },
+    imagem_url: { type: 'bytea', nullable: true },
     data_limite_inscricoes: { type: Date, nullable: true },
   },
   relations: {
@@ -25,6 +25,12 @@ const Evento = new EntitySchema({
     atividadesUnicas: {
       type: 'one-to-many',
       target: 'AtividadeUnica',
+      inverseSide: 'evento',
+      cascade: true,
+    },
+    locais: {
+      type: 'one-to-many',
+      target: 'Local',
       inverseSide: 'evento',
       cascade: true,
     },
