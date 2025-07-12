@@ -1,5 +1,5 @@
 const { AppDataSource } = require('../data-source');
-const { Responsavel, Instituicao, PublicoAlvo, Evento, Tipo, Atividade } = require('../entities');
+const { Responsavel, Instituicao, PublicoAlvo, Evento, Tipo, Atividade, Tema } = require('../entities');
 const { In } = require('typeorm'); 
 
 const atividadeRepository = AppDataSource.getRepository(Atividade);
@@ -35,7 +35,7 @@ async function criarAtividade(req, res) {
     });
 
     if (Array.isArray(temasIds) && temasIds.length > 0) {
-      const temas = await AppDataSource.getRepository('Tema').find({
+      const temas = await AppDataSource.getRepository(Tema).find({
         where: {
           id: In(temasIds)
         }

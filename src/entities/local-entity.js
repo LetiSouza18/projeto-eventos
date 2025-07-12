@@ -4,19 +4,21 @@ const Local = new EntitySchema({
   name: 'Local',
   tableName: 'locais',
   columns: {
-    id: { type: Number, primary: true, generated: true },
-    cep: { type: String, nullable: false },
-    estado: { type: String, nullable: true },
-    bairro: { type: String, nullable: true },
-    numero: { type: String, nullable: true },
-    rua: { type: String, nullable: true },
-    cidade: { type: String, nullable: true },
-    plataforma: { type: String, nullable: true },
+    id: { type: 'int4', primary: true, generated: true },
+    nome: { type: 'varchar', nullable: false},
+    cep: { type: 'varchar', nullable: true },
+    estado: { type: 'varchar', nullable: true },
+    bairro: { type: 'varchar', nullable: true },
+    numero: { type: 'varchar', nullable: true },
+    rua: { type: 'varchar', nullable: true },
+    cidade: { type: 'varchar', nullable: true },
+    plataforma: { type: 'varchar', nullable: true },
   },
   relations: {
-    evento: {
-      type: 'many-to-one',
+    eventos: {
+      type: 'one-to-many',
       target: 'Evento',
+      inverseSide: 'locais',
       nullable: true,
     },
   }

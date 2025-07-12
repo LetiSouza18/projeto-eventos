@@ -1,11 +1,11 @@
 const { AppDataSource } = require('../data-source');
 const { Evento } = require('../entities/evento-entity');
 const { Atividade } = require('../entities/atividade-entity');
-const { AtividadeUnica } = require('../entities/atividade-unica-entity'); // Importar AtividadeUnica entity
+const { AtividadeUnica } = require('../entities/atividade-unica-entity');
 
 const eventoRepository = AppDataSource.getRepository(Evento);
 const atividadeRepository = AppDataSource.getRepository(Atividade);
-const atividadeUnicaRepository = AppDataSource.getRepository(AtividadeUnica); // Obter o repositório para AtividadeUnica
+const atividadeUnicaRepository = AppDataSource.getRepository(AtividadeUnica);
 
 async function criarEvento(req, res) {
   try {
@@ -29,8 +29,9 @@ async function listarEventos(_, res) {
           publicoAlvo: true, 
           responsavel: true, 
         },
-        atividadesUnicas: {
+        atividadeUnica: {
           temas: true, 
+          tipo: true, 
           instituicao: true, 
           publicoAlvo: true, 
           responsavel: true, 
@@ -65,7 +66,7 @@ async function deletarEvento(req, res) {
   try {
     const evento = await eventoRepository.findOne({
       where: { id: parseInt(id) },
-      relations: ['atividades', 'atividadesUnicas'],
+      relations: ['atividades', 'atividadeUnica'],
     });
 
     if (!evento) return res.status(404).json({ message: 'Evento não encontrado' });

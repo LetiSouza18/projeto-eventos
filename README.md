@@ -1,8 +1,5 @@
 # Projeto Backend - Sistema de Eventos
-### API REST para gerenciamento de eventos, atividades e temas, permitindo criação, listagem, edição e remoção dessas entidades com regras específicas, como deleção em cascata e gerenciamento de relacionamentos. O projeto foi desenvolvido com Express.js, Node.js e o banco de dados utilizado foi o Postgree.
-
-### 🚀 Frontend do projeto
-Disponível em: https://github.com/LetiSouza18/frontend-projeto-livro
+### API REST para gerenciamento de eventos, atividades e temas, permitindo criação, listagem, edição e remoção dessas entidades com regras específicas, como deleção em cascata e gerenciamento de relacionamentos. O projeto foi desenvolvido com Express.js, Node.js e o banco de dados utilizado foi o PostgreeSQL.
 
 ### 📋 Pré-requisitos
 1. Node.js instalado
@@ -27,10 +24,12 @@ Disponível em: https://github.com/LetiSouza18/frontend-projeto-livro
   
 - Para iniciar o servidor de desenvolvimento, execute: ``` npm run dev ```
 
+- Rotas: 
+
 ### 🔄 Funcionalidades principais
 - CRUD para Eventos
 
-- CRUD para Atividades e Atividades Únicas
+- CRUD para Atividades, Atividades Únicas e Eventos
 
 - Gerenciamento de temas relacionados a atividades
 
@@ -49,5 +48,4 @@ Disponível em: https://github.com/LetiSouza18/frontend-projeto-livro
 
 - `src/data-source.js` — Configuração do TypeORM
 
-### 🛠️ Demonstração:
-
+- `src/script-sql` - SQL para gerar o banco de dados, view e procedure

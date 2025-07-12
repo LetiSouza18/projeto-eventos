@@ -1,5 +1,5 @@
 const { AppDataSource } = require('../data-source');
-const { AtividadeUnica } = require('../entities/atividade-unica-entity');
+const { AtividadeUnica, Responsavel, Instituicao, PublicoAlvo, Evento, Tipo, Tema } = require('../entities');
 
 const atividadeUnicaRepository = AppDataSource.getRepository(AtividadeUnica);
 
@@ -9,19 +9,30 @@ async function criarAtividadeUnica(req, res) {
   const { temas: temasIds, ...dadosAtividadeUnica } = req.body;
 
   try {
-    const evento = await AppDataSource.getRepository('Evento').findOneBy({ id: parseInt(eventoId) });
+    const evento = await AppDataSource.getRepository(Evento).findOneBy({ id: parseInt(eventoId) });
+    const tipo = await AppDataSource.getRepository(Tipo).findOneBy({ id: dadosAtividadeUnica.idTipo });
+    const responsavel = await AppDataSource.getRepository(Responsavel).findOneBy({ id: dadosAtividadeUnica.idResponsavel });
+    const instituicao = await AppDataSource.getRepository(Instituicao).findOneBy({ id: dadosAtividadeUnica.idInstituicao });
+    const publicoAlvo = await AppDataSource.getRepository(PublicoAlvo).findOneBy({ id: dadosAtividadeUnica.idPublicoAlvo });
 
     if (!evento) {
       return res.status(404).json({ message: 'Evento não encontrado' });
     }
 
     const novaAtividadeUnica = atividadeUnicaRepository.create({
-      ...dadosAtividadeUnica,
+      detalhe_local: dadosAtividadeUnica.detalhe_local,
+      horario_fim: dadosAtividadeUnica.horario_fim,
+      horario_inicio: dadosAtividadeUnica.horario_inicio,
       evento,
+      tipo,
+      responsavel,
+      instituicao,
+      publicoAlvo,
+      temas: [],
     });
 
     if (Array.isArray(temasIds) && temasIds.length > 0) {
-      const temas = await AppDataSource.getRepository('Tema').find({
+      const temas = await AppDataSource.getRepository(Tema).find({
         where: {
           id: In(temasIds)
         }

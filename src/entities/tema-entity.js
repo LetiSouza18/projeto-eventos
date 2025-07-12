@@ -4,8 +4,8 @@ const Tema = new EntitySchema({
   name: 'Tema',
   tableName: 'temas',
   columns: {
-    id: { type: Number, primary: true, generated: true },
-    nome: { type: String, nullable: false },
+    id: { type: 'int4', primary: true, generated: true },
+    nome: { type: 'varchar', nullable: false },
   },
   relations: {
     atividades: {

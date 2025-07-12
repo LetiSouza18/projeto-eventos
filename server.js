@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors'); // Adicione esta linha
+const cors = require('cors');
 const { AppDataSource } = require('./src/data-source');
 const routesEventos = require('./src/routes/routes');
 
