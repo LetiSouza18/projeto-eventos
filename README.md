@@ -24,7 +24,6 @@
   
 - Para iniciar o servidor de desenvolvimento, execute: ``` npm run dev ```
 
-- Rotas: 
 
 ### 🔄 Funcionalidades principais
 - CRUD para Eventos
